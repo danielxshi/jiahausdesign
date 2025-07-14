@@ -37,7 +37,7 @@ export default function ClientShell({
   }, [pathname])
 
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.1 })
+    const lenis = new Lenis({ lerp: 0.1, smooth: true })
     lenisRef.current = lenis
 
     const raf = (time: number) => {
@@ -77,22 +77,8 @@ export default function ClientShell({
         )}
       </AnimatePresence>
 
-      <main className="relative">
+      <main className="relative overflow-visible">
         <div className="z-10 relative">{children}</div>
-
-        {/* PARALLAX IMAGE SECTION */}
-        <section className="relative h-screen overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full" data-scroll data-scroll-speed="1.5">
-            <Image
-              src="https://nailcissist.com/cdn/shop/files/Untitled_design_b4accec6-a4b2-4f66-9d85-e4023ac11aa4.png?v=1751867630&width=900"
-              alt="Parallax"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </section>
-
         <Footer />
       </main>
     </>

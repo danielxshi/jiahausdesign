@@ -7,6 +7,7 @@ import SectionLabel from '../../(frontend)/components/section/SectionLabel'
 import BigText from '../../(frontend)/components/section/BigText'
 import LogoContainer from '../../(frontend)/components/logo-container'
 import Logo from '../../(frontend)/components/logo'
+import ZoomParallaxSection from './parallax/ZoomParallax'
 
 interface Props {
   children?: React.ReactNode
@@ -59,6 +60,19 @@ export default function HomeClient({ children }: Props) {
           ))}
         </LogoContainer>
       </Section>
+
+      {/* PARALLAX IMAGE SECTION */}
+      <section className="relative h-screen overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full" data-scroll data-scroll-speed="1.5">
+          <FallbackImage
+            src="https://nailcissist.com/cdn/shop/files/Untitled_design_b4accec6-a4b2-4f66-9d85-e4023ac11aa4.png?v=1751867630&width=900"
+            alt="Parallax"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </section>
 
       {children}
     </main>
