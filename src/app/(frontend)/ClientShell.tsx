@@ -77,12 +77,13 @@ export default function ClientShell({
           </motion.div>
         )}
       </AnimatePresence>
-
-      <main className="relative overflow-visible">
-        <div className="z-10 relative">{children}</div>
-        <section className="relative z-0">
-          <ZoomParallaxSection />
-        </section>
+      <main className="relative">
+        {children}
+        <div className="relative h-[300vh] w-full">
+          <div className="">
+            <ZoomParallaxSection />
+          </div>
+        </div>
         <Footer />
       </main>
     </>
