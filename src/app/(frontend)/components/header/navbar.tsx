@@ -27,8 +27,11 @@ export default function NavbarClient({ siteName }: Props) {
       setScrollY(window.scrollY)
       // You can also add other logic here based on scroll position
       // For example, changing a header style when scrolled past a certain point
-      if (window.scrollY > 100) {
+      if (window.scrollY > 500) {
         console.log('Scrolled past 100px')
+        setHideNav(true)
+      } else {
+        setHideNav(false)
       }
     }
 
@@ -43,14 +46,14 @@ export default function NavbarClient({ siteName }: Props) {
 
   return (
     <motion.nav
-      initial={{ y: 0 }}
+      initial={{ y: -100 }}
       animate={{ y: hideNav ? -100 : 0 }} // Correct syntax for Framer Motion
       transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
       className={`z-[999] absolute left-0 w-full backdrop-blur-sm border-b transition-colors duration-300 ${
         hideNav ? '' : 'bg-transparent'
       }`}
     >
-      <div className="flex items-center justify-between h-20 px-4 lg:px-8">
+      <div className="flex items-center justify-between h-20 px-4 lg:px-8 w-[100vw]">
         <div className="flex items-center w-1/3 gap-4">
           <ul className="hidden lg:flex gap-6 text-sm font-medium">
             {tempMenu.map((item) => (
