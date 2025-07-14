@@ -6,6 +6,8 @@ import SectionLabel from '../../(frontend)/components/section/SectionLabel'
 import BigText from '../../(frontend)/components/section/BigText'
 import LogoContainer from '../../(frontend)/components/logo-container'
 import Logo from '../../(frontend)/components/logo'
+import ZoomParallaxSection from './parallax/ZoomParallax'
+import News from './news'
 
 interface Props {
   children?: React.ReactNode
@@ -16,12 +18,12 @@ export default function HomeClient({ children }: Props) {
     <main className="flex-1">
       <section className="relative">
         {/* Noise overlay */}
-        <div
+        {/* <div
           className="absolute top-0 left-0 w-full h-[calc(100%+1px)] pointer-events-none z-[1]"
           style={{
             background: `url("https://www.gryphonliving.com/static/media/background_noise.735964358a992a7fe340.png"), linear-gradient(rgba(16, 27, 62, 0) 0%, rgb(16, 27, 62) 95%)`,
           }}
-        ></div>
+        ></div> */}
 
         <motion.div
           className="z-[10] w-full h-screen overflow-hidden"
@@ -48,9 +50,17 @@ export default function HomeClient({ children }: Props) {
         </BigText>
       </Section>
 
-      <Section data-scroll-section>
+      {children}
+      <Section data-scroll-section className="bg-black my-24 py-24">
         <LogoContainer>
-          {[...Array(6)].map((_, i) => (
+          {[
+            'https://www.005f.agency/client-logos/bw/ap.png',
+            'https://www.005f.agency/client-logos/bw/calvin-klein.png',
+            'https://www.005f.agency/client-logos/bw/fairmont-dubai.png',
+            'https://www.005f.agency/client-logos/bw/hublot.png',
+            'https://www.005f.agency/client-logos/bw/hunt-fish-club.png',
+            'https://www.005f.agency/client-logos/bw/millenium.png',
+          ].map((logo, i) => (
             <div
               key={i}
               data-scroll
@@ -58,17 +68,21 @@ export default function HomeClient({ children }: Props) {
               data-scroll-speed={i < 3 ? '0.5' : '-0.5'}
             >
               <div className="relative h-[200px] w-full">
-                <Logo
-                  src="https://nailcissist.com/cdn/shop/files/Untitled_design_b4accec6-a4b2-4f66-9d85-e4023ac11aa4.png?v=1751867630&width=900"
-                  alt="Background"
-                />
+                <img src={logo} alt={`Logo ${i + 1}`} className="object-contain w-full h-full" />
               </div>
             </div>
           ))}
         </LogoContainer>
       </Section>
 
-      {children}
+      <Section data-scroll-section>
+        <News />
+      </Section>
+      <div className="relative h-[300vh] w-full">
+        <div className="">
+          <ZoomParallaxSection />
+        </div>
+      </div>
     </main>
   )
 }

@@ -62,7 +62,7 @@ export default function NavbarClient({ siteName }: Props) {
                   <span
                     className={`transition-colors ${
                       pathname === item.path
-                        ? 'text-black dark:text-white'
+                        ? ' dark:text-white'
                         : 'text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white'
                     }`}
                   >
@@ -76,7 +76,7 @@ export default function NavbarClient({ siteName }: Props) {
 
         <div className="flex justify-center w-1/3">
           <Link href="/">
-            <span className="text-sm font-semibold uppercase tracking-widest text-black dark:text-white">
+            <span className="text-sm font-semibold uppercase tracking-widest  dark:text-white">
               {siteName}
             </span>
           </Link>

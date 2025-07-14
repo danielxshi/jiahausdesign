@@ -2,15 +2,12 @@
 
 import { usePathname } from 'next/navigation'
 import { useEffect, useState, useRef } from 'react'
-import { AdminBar } from '@/components/AdminBar'
 import Loader from './components/loading'
 import { motion, AnimatePresence } from 'framer-motion'
 import NavbarClient from './components/header/navbar'
 import Footer from './components/footer'
 import Lenis from '@studio-freight/lenis'
-import Image from 'next/image'
-import ZoomParallaxSection from './components/parallax/ZoomParallax'
-import ToggleButton from './components/buttons/ToggleButton'
+
 export default function ClientShell({
   children,
   preview,
@@ -22,7 +19,7 @@ export default function ClientShell({
   const [showLoader, setShowLoader] = useState(pathname === '/')
   const [showAdminBar, setShowAdminBar] = useState(false)
   const lenisRef = useRef<Lenis | null>(null)
-
+  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Shop'
   useEffect(() => {
     if (pathname === '/') {
       const loaderTimeout = setTimeout(() => {
@@ -73,17 +70,12 @@ export default function ClientShell({
             }}
             layout
           >
-            <NavbarClient siteName="YourSiteName" />
+            <NavbarClient siteName={siteName} />
           </motion.div>
         )}
       </AnimatePresence>
       <main className="relative">
         {children}
-        <div className="relative h-[300vh] w-full">
-          <div className="">
-            <ZoomParallaxSection />
-          </div>
-        </div>
         <Footer />
       </main>
     </>

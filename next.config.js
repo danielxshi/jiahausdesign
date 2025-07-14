@@ -16,6 +16,16 @@ const nextConfig = {
         hostname: 'www.nailcissist.com',
         pathname: '/cdn/shop/files/**',
       },
+      {
+        protocol: 'https',
+        hostname: '005f.agency',
+        pathname: '/cdn/shop/files/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.005f.agency',
+        pathname: '/client-logos/bw/**',
+      },
     ],
   },
   webpack: (webpackConfig) => {
