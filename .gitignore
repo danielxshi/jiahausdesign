@@ -1,21 +1,23 @@
-build
-dist / media
+# Node.js
 node_modules
-.DS_Store
-.env
+dist
 .next
-.vercel
 
-# Payload default media upload directory
-public/media/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-public/robots.txt
-public/sitemap*.xml
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
+# OS
+.DS_Store
 
-# Playwright
-node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+# Optional IDE
+.vscode
+.idea
