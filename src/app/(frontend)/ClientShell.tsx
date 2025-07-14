@@ -9,6 +9,7 @@ import NavbarClient from './components/header/navbar'
 import Footer from './components/footer'
 import Lenis from '@studio-freight/lenis'
 import Image from 'next/image'
+import ZoomParallaxSection from './components/parallax/ZoomParallax'
 
 export default function ClientShell({
   children,
@@ -79,6 +80,9 @@ export default function ClientShell({
 
       <main className="relative overflow-visible">
         <div className="z-10 relative">{children}</div>
+        <section className="relative z-0">
+          <ZoomParallaxSection />
+        </section>
         <Footer />
       </main>
     </>

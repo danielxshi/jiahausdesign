@@ -1,46 +1,44 @@
+// ZoomParallaxSection.tsx
 'use client'
 
-import { useRef } from 'react'
-import { useScroll, useTransform, motion, MotionValue } from 'framer-motion'
-import Image from 'next/image'
 import styles from './zoomparallax.module.scss'
+import FallbackImage from '../../fallback-image'
+import { useScroll, useTransform, motion, scroll } from 'framer-motion'
+import { useRef } from 'react'
 
-// List of images and their scale ranges
-const pictures: { src: string; scaleRange: [number, number] }[] = [
-  { src: '/img1.jpg', scaleRange: [1, 1.2] },
-  { src: '/img2.jpg', scaleRange: [1, 1.5] },
-  { src: '/img3.jpg', scaleRange: [1, 1.3] },
-  { src: '/img4.jpg', scaleRange: [1, 1.4] },
-  { src: '/img5.jpg', scaleRange: [1, 1.6] },
-  { src: '/img6.jpg', scaleRange: [1, 1.3] },
-  { src: '/img7.jpg', scaleRange: [1, 1.5] },
-]
+const fallbackSrc =
+  'https://nailcissist.com/cdn/shop/files/Untitled_design_b4accec6-a4b2-4f66-9d85-e4023ac11aa4.png?v=1751867630&width=900'
 
-// Custom hook to map picture scale transforms safely
-function useScaleTransforms(scrollYProgress: MotionValue<number>, ranges: [number, number][]) {
-  return ranges.map((range) => useTransform(scrollYProgress, [0, 1], range))
-}
+const nailcissistImage = fallbackSrc
+
+const pictures = new Array(7).fill({ src: nailcissistImage })
 
 export default function ZoomParallaxSection() {
   const container = useRef(null)
-
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start end', 'end start'],
+    offset: ['start start', 'end end'],
   })
 
-  const scaleTransforms = useScaleTransforms(
-    scrollYProgress,
-    pictures.map((p) => p.scaleRange),
-  )
+  const scales = [
+    useTransform(scrollYProgress, [0, 1], [1, 4]),
+    useTransform(scrollYProgress, [0, 1], [1, 5]),
+    useTransform(scrollYProgress, [0, 1], [1, 6]),
+    useTransform(scrollYProgress, [0, 1], [1, 5]),
+    useTransform(scrollYProgress, [0, 1], [1, 6]),
+    useTransform(scrollYProgress, [0, 1], [1, 8]),
+    useTransform(scrollYProgress, [0, 1], [1, 9]),
+  ]
 
   return (
     <div ref={container} className={styles.container}>
-      <div className={styles.sticky}>
-        {pictures.map(({ src }, index) => (
-          <motion.div key={index} style={{ scale: scaleTransforms[index] }} className={styles.el}>
+      <div className={''}>
+        {pictures.map((pic, index) => (
+          <motion.div key={index} style={{ scale: scales[index] }} className={styles.el}>
             <div className={styles.imageContainer}>
-              <Image src={src} fill alt="image" placeholder="blur" />
+              {' '}
+              {/* has position: relative, width/height */}
+              <div style={{ backgroundColor: 'red', width: '100%', height: '100%' }} />
             </div>
           </motion.div>
         ))}
