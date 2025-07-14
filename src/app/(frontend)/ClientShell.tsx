@@ -10,7 +10,7 @@ import Footer from './components/footer'
 import Lenis from '@studio-freight/lenis'
 import Image from 'next/image'
 import ZoomParallaxSection from './components/parallax/ZoomParallax'
-
+import ToggleButton from './components/buttons/ToggleButton'
 export default function ClientShell({
   children,
   preview,

@@ -49,7 +49,7 @@ export default function NavbarClient({ siteName }: Props) {
       initial={{ y: -100 }}
       animate={{ y: hideNav ? -100 : 0 }} // Correct syntax for Framer Motion
       transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`z-[999] absolute left-0 w-full backdrop-blur-sm border-b transition-colors duration-300 ${
+      className={`z-[999] absolute left-0 w-[100vw] backdrop-blur-sm transition-colors duration-300 ${
         hideNav ? '' : 'bg-transparent'
       }`}
     >

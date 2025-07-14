@@ -1,5 +1,5 @@
 import React from 'react'
-// import Content from './Content';
+import ToggleButton from '../../components/buttons/ToggleButton'
 
 export default function Footer() {
   return (
@@ -12,18 +12,23 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between h-full px-8 md:px-20 py-48 text-white font-light">
             {/* Left: Branding and Contact */}
             <div className="flex flex-col space-y-6 mt-auto mb-0">
-              <div className="text-5xl tracking-widest font-light text-yellow-400">GRYPHON</div>
+              <div className="text-5xl tracking-widest font-light text-yellow-400">JIAHAUS</div>
               <div className="space-y-2">
-                <p>604 620 8296</p>
-                <p>info@gryphonliving.com</p>
+                <p>604 123 1234</p>
+                <p>info@jiahaus.com</p>
                 <p>
-                  102–2590 Granville Street,
+                  111-1111 Granville Street,
                   <br />
                   Vancouver, BC V6H 3H1
                 </p>
+                <ToggleButton
+                  primaryText="Toggle Theme"
+                  maskedText="Switch Mode"
+                  onClick={() => console.log('Toggle Theme Clicked')}
+                />
               </div>
               <div className="text-xs text-neutral-400 pt-8">
-                <p>© 2023 Gryphon Development</p>
+                <p>© 2025 JIAHAUS Development</p>
                 <div className="space-x-4 mt-2">
                   <a href="#" className="hover:underline">
                     Privacy Policy
@@ -53,7 +58,7 @@ export default function Footer() {
                 Little Red Book
               </a>
 
-              <p className="text-xs text-neutral-400 mt-8">Website by Bam Digital</p>
+              <p className="text-xs text-neutral-400 mt-8">Website by JIAHAUS</p>
             </div>
           </div>
         }
