@@ -35,7 +35,7 @@ export default function ClientShell({
   }, [pathname])
 
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.1, smooth: true })
+    const lenis = new Lenis({ lerp: 0.1 })
     lenisRef.current = lenis
 
     const raf = (time: number) => {
